@@ -18,6 +18,10 @@ echo -e "${LIGHTBLUE}REMOVING BACKUP ARCHIVES FROM /VAR/...${ENDCOLOR}"
   sudo rm -rf /var/backups/*.gz
 echo -e "${LIGHTBLUE}PURGING ORPHANED PACKAGES...${ENDCOLOR}"
   sudo apt autoremove -y --purge
+echo -e "${LIGHTBLUE}REMOVING OBSOLETE PACKAGES & INSTALLERS...${ENDCOLOR}"
+  sudo apt clean
+echo -e "${LIGHTBLUE}REMOVING RESIDUAL CONFIGURATION FILES FROM REMOVED PACKAGES...${ENDCOLOR}"
+  sudo dpkg -l | grep '^rc' | awk '{print $2}' | sudo xargs dpkg --purge
 
 echo -e "${LIGHTBLUE}CLEARING FIREFOX CACHE...${ENDCOLOR}"
   cd ~/.cache/mozilla/firefox/*/cache2/entries/ && find -maxdepth 1 -name "*" -delete && cd
@@ -36,14 +40,10 @@ echo -e "${LIGHTBLUE}FIXING BROKEN PACKAGES...${ENDCOLOR}"
 echo -e "${LIGHTBLUE}UPDATING REPOSITORIES...${ENDCOLOR}"
   sudo apt update
 echo -e "${LIGHTBLUE}UPDGRADING PACKAGES...${ENDCOLOR}"
-  sudo apt upgrade -y
+  #sudo apt upgrade -y
     #IF YOU RECEIVE "dpkg-deb: error: paste subprocess was killed by signal (Broken pipe)" THEN RUN "sudo dpkg -i --force-overwrite var/cache/apt/archives/[PACKAGE NAME]"
-echo -e "${LIGHTBLUE}PURGING NEWLY ORPHANED PACKAGES...${ENDCOLOR}"
-  sudo apt autoremove -y --purge
-echo -e "${LIGHTBLUE}REMOVING OBSOLETE PACKAGES & INSTALLERS...${ENDCOLOR}"
-  sudo apt clean
-echo -e "${LIGHTBLUE}REMOVING RESIDUAL CONFIGURATION FILES FROM REMOVED PACKAGES...${ENDCOLOR}"
-  sudo dpkg -l | grep '^rc' | awk '{print $2}' | sudo xargs dpkg --purge
+#echo -e "${LIGHTBLUE}PURGING NEWLY ORPHANED PACKAGES...${ENDCOLOR}"
+  #sudo apt autoremove -y --purge
 
 echo -e "${BOLDGREEN}CLEANING COMPLETE!${ENDCOLOR}"
 
