@@ -39,7 +39,7 @@ echo -e "${LIGHTBLUE}FIXING BROKEN PACKAGES...${ENDCOLOR}"
   sudo apt --fix-broken install
 echo -e "${LIGHTBLUE}UPDATING REPOSITORIES...${ENDCOLOR}"
   sudo apt update
-echo -e "${LIGHTBLUE}UPDGRADING PACKAGES...${ENDCOLOR}"
+#echo -e "${LIGHTBLUE}UPDGRADING PACKAGES...${ENDCOLOR}"
   #sudo apt upgrade -y
     #IF YOU RECEIVE "dpkg-deb: error: paste subprocess was killed by signal (Broken pipe)" THEN RUN "sudo dpkg -i --force-overwrite var/cache/apt/archives/[PACKAGE NAME]"
 #echo -e "${LIGHTBLUE}PURGING NEWLY ORPHANED PACKAGES...${ENDCOLOR}"
