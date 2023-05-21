@@ -10,7 +10,7 @@ The purpose of this script is to provide a low-effort/high-impact sweep of your 
 * Removes older versions of Snap Packages
 * Removes Backup Packages
 * Purges orphaned Packages
-* Removes Forefox cache
+* Removes Firefox cache
 * Removes VLC album thumbnails
 * Empties the Trash
 
